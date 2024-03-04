@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, Outlet } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -9,7 +10,7 @@ const Header = () => {
       <div className="options h-20 my-auto text-md font-normal p-4 tracking-wider">
         <ul className="flex p-4 ">
           <li className="mx-6 transition-colors hover:text-[#f8b40e] hover:cursor-pointer">
-            Home
+            <Link to={"/"}>Home</Link>
           </li>
           <li className="mx-6 transition-colors hover:text-[#f8b40e] hover:cursor-pointer">
             What we do
@@ -24,7 +25,7 @@ const Header = () => {
             Query
           </li>
           <li className="mx-6 transition-colors hover:text-[#f8b40e] hover:cursor-pointer">
-            Vendors
+            <Link to={"/sites"}> Sites</Link>
           </li>
           <li className="mx-6 transition-colors hover:text-[#f8b40e] hover:cursor-pointer">
             Contact us

@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import "./App.css";
 import Breif from "./component/Breif";
 import Carousel from "./component/Carousel";
@@ -9,11 +10,12 @@ import SmallCarousel from "./component/SmallCarousel";
 import data from "./util/imageData";
 import data2 from "./util/imageData2";
 import data3 from "./util/imageData3";
+import FaceDetection from "./component/FaceDetection";
 
 function App() {
   return (
     <div className="App font-rob ">
-      <Header />
+      {/* <Header /> */}
       <Carousel data={data} />
       <Breif />
       <Services />
@@ -25,7 +27,8 @@ function App() {
           <SmallCarousel data={data2} />
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
+      <FaceDetection />
     </div>
   );
 }
