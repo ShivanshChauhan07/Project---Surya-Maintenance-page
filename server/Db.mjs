@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
-
-const URI =
-  "mongodb+srv://shivam:shivam123@node-express-project.rr12wyk.mongodb.net/ringroad?retryWrites=true&w=majority&appName=Node-Express-Project";
+import "dotenv/config";
+const URI = process.env.MONGO_URI;
 
 const connect = async () => {
   try {

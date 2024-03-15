@@ -1,4 +1,5 @@
 import express, { urlencoded } from "express";
+import "dotenv/config";
 import staff from "./model.mjs";
 import data from "./routes/route.mjs";
 import cors from "cors";
