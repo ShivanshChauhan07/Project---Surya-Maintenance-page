@@ -80,20 +80,20 @@ const Footer = () => {
       </footer>
       <div className="bg-white flex justify-between p-4 px-40">
         <div className="flex justify-around w-56">
-          <div classname="icon ">
-            <i class="fa fa-facebook-f "></i>
+          <div className="icon ">
+            <i className="fa fa-facebook-f "></i>
           </div>
-          <div classname="icon border-2 border-red-600 ">
-            <i class="fa fa-twitter"></i>
+          <div className="icon border-2 border-red-600 ">
+            <i className="fa fa-twitter"></i>
           </div>
-          <div classname="icon border-2 border-red-600 ">
-            <i class="fa fa-instagram"></i>
+          <div className="icon border-2 border-red-600 ">
+            <i className="fa fa-instagram"></i>
           </div>
-          <div classname="icon border-2 border-red-600 ">
-            <i class="fa fa-google-plus"></i>
+          <div className="icon border-2 border-red-600 ">
+            <i className="fa fa-google-plus"></i>
           </div>
-          <div classname="icon border-2 border-red-600 ">
-            <i class="fa fa-envelope"></i>
+          <div className="icon border-2 border-red-600 ">
+            <i className="fa fa-envelope"></i>
           </div>
         </div>
         <h1 className="text-sm text-slate-400">

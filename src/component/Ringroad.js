@@ -1,15 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../App.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import Scanner from "./Scanner";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Ringroad = () => {
+  const [details, setDetails] = useState([
+    {
+      name: "",
+      designation: "",
+      shift: "",
+      imgAdd: "",
+    },
+  ]);
+  const [staffTime, setStaffTime] = useState([
+    {
+      name: "",
+      timeIn: "",
+      date: "",
+      timeOut: "",
+    },
+  ]);
   const [showModal, setShowmodal] = useState(false);
   const [name, setName] = useState("");
   const [currTime, setCurrTime] = useState(``);
   const navigate = useNavigate();
+
+  const sendTimings = async () => {
+    const data = await axios.post("http://localhost:5000/att", {
+      name: name,
+      time: currTime,
+      date: String(new Date().toLocaleDateString()),
+    });
+    // console.log(data);
+  };
 
   const time = () => {
     const today = new Date();
@@ -17,9 +43,15 @@ const Ringroad = () => {
     const mins = today.getMinutes();
     const AMPM = today.getHours() >= 12 ? "pm" : "am";
     const time = `${hr}:${mins} ${AMPM}`;
-    console.log(time);
+    // console.log(today.toLocaleDateString());
+    // sendTimings(time);
     setCurrTime(time);
   };
+
+  useEffect(() => {
+    // console.log("see here staff " + staffTime?.timeOut);
+    console.clear();
+  }, [staffTime]);
 
   return (
     <>
@@ -38,48 +70,63 @@ const Ringroad = () => {
                   type="text"
                   placeholder="Name"
                   name="name"
-                  value={name && name}
+                  value={name}
                   disabled
                 />
               </div>
               <div className="flex justify-between p-4 font-rob font-extralight text-lg">
-                <label htmlFor="name">Designation</label>
+                <label htmlFor="designation">Designation</label>
                 <input
                   className="rounded-sm bg-stone-50 h-9 w-48"
                   type="text"
                   placeholder="Designation"
                   name="designation"
+                  value={
+                    details?.designation === undefined
+                      ? ""
+                      : details?.designation
+                  }
                   disabled
                 />
               </div>
               <div className="flex justify-between p-4 font-rob font-extralight text-lg">
-                <label htmlFor="name">Shift</label>
+                <label htmlFor="shift">Shift</label>
                 <input
                   className="rounded-sm bg-stone-50 h-9 w-48"
                   type="text"
                   placeholder="Shift"
                   name="shift"
+                  value={details?.shift === undefined ? "" : details?.shift}
                   disabled
                 />
               </div>
               <div className="flex justify-between p-4 font-rob font-extralight text-lg">
-                <label htmlFor="name">Time In</label>
+                <label htmlFor="Time In">Time In</label>
                 <input
                   className="rounded-sm bg-stone-50 h-9 w-48"
                   type="text"
                   placeholder="Time In"
                   name="Time In"
-                  value={name && currTime}
+                  value={
+                    name && staffTime?.timeIn === undefined
+                      ? currTime
+                      : staffTime?.timeIn
+                  }
                   disabled
                 />
               </div>
               <div className="flex justify-between p-4 font-rob font-extralight text-lg">
-                <label htmlFor="name">Time Out</label>
+                <label htmlFor="Time Out">Time Out</label>
                 <input
                   className="rounded-sm bg-stone-50 h-9 w-48"
                   type="text"
                   placeholder="Time Out"
                   name="Time Out"
+                  value={
+                    staffTime?.timeIn && staffTime?.timeOut === undefined
+                      ? currTime
+                      : staffTime?.timeOut
+                  }
                   disabled
                 />
               </div>
@@ -89,6 +136,13 @@ const Ringroad = () => {
                     e.preventDefault();
                     setShowmodal(true);
                     time();
+                    // name && sendTimings();
+                    if (name && staffTime?.timeOut === undefined) sendTimings();
+
+                    // setTimeout(() => {
+                    //   sendTimings();
+                    // }, 9000);
+
                     name && navigate("/");
                   }}
                   className="rounded-md bg-green-500 text-white p-3 w-28 mx-48 my-2 "
@@ -112,7 +166,15 @@ const Ringroad = () => {
           <img className="" src="./images/attendancePic/bubble.png" alt="" />
         </div>
         {showModal && (
-          <Scanner closeModal={setShowmodal} name={name} setName={setName} />
+          <Scanner
+            closeModal={setShowmodal}
+            name={name}
+            setName={setName}
+            details={details}
+            setDetails={setDetails}
+            setStaffTime={setStaffTime}
+            staffTime={staffTime}
+          />
         )}
         <Footer />
       </div>

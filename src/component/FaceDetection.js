@@ -2,7 +2,7 @@ import React from "react";
 import * as faceapi from "face-api.js";
 
 const FaceDetection = () => {
-  console.log(faceapi.nets);
+  // console.log(faceapi.nets);
 
   return (
     <>

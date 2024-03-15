@@ -23,6 +23,7 @@ const Carousel = ({ data }) => {
       {data.map((singleData, index) => {
         return (
           <img
+            key={index}
             src={singleData}
             alt="img"
             className={slide === index ? "hero2 w-full" : "hidden"}

@@ -19,7 +19,7 @@ const Services = () => {
         </div>
         <div className="m-16">
           <div className="compass relative mx-12 p-1">
-            <i class="fa fa-tree text-7xl my-2 "></i>
+            <i className="fa fa-tree text-7xl my-2 "></i>
           </div>
           <h1 className="my-8 ">Horticulture and landscaping</h1>
         </div>
@@ -67,7 +67,7 @@ const Services = () => {
         </div>
         <div className="m-16">
           <div className="compass relative mx-11 p-1">
-            <i class="fa fa-tint text-7xl my-2"></i>
+            <i className="fa fa-tint text-7xl my-2"></i>
           </div>
           <h1 className="my-8 p-2">Water Mgmt & Plumbing</h1>
         </div>

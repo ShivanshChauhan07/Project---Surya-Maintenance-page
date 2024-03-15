@@ -23,6 +23,7 @@ const SmallCarousel = ({ data, width, height }) => {
       {data.map((singleData, index) => {
         return (
           <div
+            key={index}
             className={
               slide === index
                 ? `hero h-48 w-72 flex-shrink-0 mx-auto`
